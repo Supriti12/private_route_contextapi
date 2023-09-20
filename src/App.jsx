@@ -7,12 +7,13 @@ function App() {
   return (
     <>
       <Router>
-        <Navbar />
         <Routes>
+          <Route path="/login" element={<Login />} />
           <Route element={<CheckAuth />}>
-            <Route index path="/" element={<h1>Home</h1>} />
+            <Route element={<Navbar />}>
+              <Route path="/" element={<Home />} />
+            </Route>
           </Route>
-          <Route path="/login" element={<Login />}></Route>
         </Routes>
       </Router>
     </>
