@@ -32,22 +32,6 @@ const Login = () => {
       return false;
     }
 
-    // var lowerCase = /[a-z]/g;
-    // var upperCase = /[A-Z]/g;
-    // var numbers = /[0-9]/g;
-    // if (!user.password.match(lowerCase)) {
-    //   setError('Password should contains lowercase letters!');
-    //   return false;
-    // } else if (!user.password.match(upperCase)) {
-    //   setError('Password should contain uppercase letters!');
-    //   return false;
-    // } else if (!user.password.match(numbers)) {
-    //   setError('Password should contains numbers also!');
-    //   return false;
-    // } else if (user.password.length < 10) {
-    //   setError('Password length should be more than 10.');
-    //   return false;
-    // }
 
     if (!user.password) {
       setError({ ...error, password: '@password is required' });
