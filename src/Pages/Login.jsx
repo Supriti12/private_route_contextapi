@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { useAuth } from '../Context/UserProvider';
+// import { useAuth } from '../Context/UserProvider';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginStatus } from '../Redux/Slice/LoginSlice';
+import Auth from '../Services/Auth';
 
 const initialValue = {
   email: '',
   password: '',
 };
 const Login = () => {
+  const { redirectTo } = useSelector(state => state?.login);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [user, setUser] = useState(initialValue);
   const [error, setError] = useState({});
-  const { setloginStatus } = useAuth();
+  // const { setloginStatus } = useAuth();
 
   const validation = () => {
     let error = {};
@@ -46,8 +51,8 @@ const Login = () => {
     if (!user.password) {
       setError({ ...error, password: '@password is required' });
       return false;
-    } else if (user.password.length > 3 && user.password.length < 8) {
-      setError({ ...error, password: '@enter 4-7 digit password' });
+    } else if (user.password.length < 8) {
+      setError({ ...error, password: '@enter more than 8 digit password' });
       return false;
     }
     return true;
@@ -72,9 +77,23 @@ const Login = () => {
       password: user.password,
     };
     console.log(logindata);
-    setloginStatus(true);
-    navigate('/');
+    // setloginStatus(true);
+    // navigate('/');
   };
+
+  const redirectUser = () => {
+    const token = JSON.parse(localStorage.getItem('token'));
+    if (token !== null && token !== undefined && token !== '') {
+      navigate('/');
+    }
+  };
+  // useEffect(() => {
+  //   redirectUser();
+  // }, [redirectTo]);
+
+  useEffect(() => {
+    dispatch(loginStatus());
+  }, [dispatch]);
 
   return (
     <div style={{ marginLeft: '20rem', width: '100%', height: '100vh' }}>

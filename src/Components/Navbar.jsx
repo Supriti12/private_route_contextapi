@@ -1,7 +1,15 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const { LogoutToggle } = useSelector(state => state?.login);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleclose = () => {
+    dispatch(logout());
+    navigate('/login');
+  };
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -27,12 +35,23 @@ const Navbar = () => {
                   Home
                 </Link>
               </li>
-
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">
-                  Login
-                </Link>
-              </li>
+              {LogoutToggle === true ? (
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link" onClick={handleclose}>
+                      Logout
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/login">
+                      Login
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
