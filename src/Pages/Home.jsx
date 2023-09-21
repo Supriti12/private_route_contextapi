@@ -7,9 +7,8 @@ const Home = () => {
     let path = 'v1/admin/viewProfile';
     let res = await get(path);
     if (res.status) {
-      // return res?.data;
       setdata(res?.data);
-      console.log(res.data);
+      // console.log(res.data);
     }
   };
   useEffect(() => {
@@ -22,7 +21,7 @@ const Home = () => {
         <div className="row">
           {data?.map((user, k) => {
             return (
-              <>
+              <div key={k + 1}>
                 <div class="card" style={{ width: '18rem' }}>
                   <div class="card-body">
                     <h5 class="card-title">
@@ -31,7 +30,7 @@ const Home = () => {
                     <p class="card-text">{user.email}</p>
                   </div>
                 </div>
-              </>
+              </div>
             );
           })}
         </div>

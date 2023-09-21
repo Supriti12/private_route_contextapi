@@ -32,7 +32,6 @@ const Login = () => {
       return false;
     }
 
-
     if (!user.password) {
       setError({ ...error, password: '@password is required' });
       return false;
@@ -70,6 +69,7 @@ const Login = () => {
       console.log('hhhh', res);
       if (res.status) {
         localStorage.setItem('token', res?.data?.token);
+        dispatch(loginStatus());
         navigate('/');
       }
     } catch (error) {
@@ -89,9 +89,9 @@ const Login = () => {
   //   redirectUser();
   // }, [redirectTo]);
 
-  useEffect(() => {
-    dispatch(loginStatus());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(loginStatus());
+  // }, [dispatch]);
 
   return (
     <div style={{ marginLeft: '20rem', width: '100%', height: '100vh' }}>
