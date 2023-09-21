@@ -7,6 +7,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleclose = () => {
+    e.preventDefault();
     localStorage.clear();
     dispatch(logout());
     navigate('/login');
