@@ -1,6 +1,6 @@
-const BASE_URL = 'http://34.249.210.102:8025/api/';
-const ALLOW_ORIGIN = 'http://34.249.210.102:8025';
-const USER_TYPE = 'User';
+const BASE_URL = 'http://13.127.222.180:4051/';
+const ALLOW_ORIGIN = 'http://13.127.222.180:4051/';
+const USER_TYPE = 'Admin';
 
 function get(endpoint, params) {
   return requestData(endpoint, params);
@@ -19,12 +19,11 @@ function deletemethod(endpoint, params) {
 }
 
 async function requestData(url, data = {}, method = 'GET') {
-  // console.log('khankidata',data)
   let xhr = new XMLHttpRequest();
   xhr.open(method, BASE_URL + url);
   if (checkingAuth()) xhr.setRequestHeader('authorization', checkingAuth());
   xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.setRequestHeader('Access-Control-Allow-Origin', ALLOW_ORIGIN);
+  // xhr.setRequestHeader('Access-Control-Allow-Origin', ALLOW_ORIGIN);
   xhr.setRequestHeader('userType', USER_TYPE);
 
   return new Promise((resolve, reject) => {
@@ -80,7 +79,7 @@ async function fileUpload(url, file, callback = () => {}) {
 }
 
 function checkingAuth() {
-  let token = localStorage.get('token');
+  let token = localStorage.getItem('token');
 
   // let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJBdmlzaGVrIiwibGFzdE5hbWUiOiJNYWl0eSIsImVtYWlsIjoiYXZpc2hla0BnbWFpbC5jb20iLCJtb2JpbGVObyI6Ijc5ODA5MjExMzIiLCJkb2IiOiIxNS4wMy4xOTk2IiwicGFzc3dvcmQiOiIxMjM0NTY3OCIsImNvdW50cnkiOiJpbmRpYSIsImlhdCI6MTY4Njk4NzY5NH0.yRHb6gGq6PSnL99jUdHOl7hHoXF5BPcBqe4DLfbu0HE"
   if (token) {

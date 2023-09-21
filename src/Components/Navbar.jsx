@@ -7,9 +7,11 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleclose = () => {
+    localStorage.clear();
     dispatch(logout());
     navigate('/login');
   };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">

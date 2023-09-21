@@ -1,6 +1,6 @@
 import { get, post, put } from '../utils/HttpClient';
-const Login = () => {
+const LoginApi = data => {
   let path = 'v1/admin/login';
-  return get(path);
+  return post(path, data);
 };
-export default { Login };
+export default { LoginApi };

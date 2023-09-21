@@ -3,7 +3,8 @@ import { Navigate, useNavigate } from 'react-router-dom';
 // import { useAuth } from '../Context/UserProvider';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginStatus } from '../Redux/Slice/LoginSlice';
-import Auth from '../Services/Auth';
+import LoginApi from '../Services/Auth';
+import { get, post, put } from '../utils/HttpClient';
 
 const initialValue = {
   email: '',
@@ -51,8 +52,8 @@ const Login = () => {
     if (!user.password) {
       setError({ ...error, password: '@password is required' });
       return false;
-    } else if (user.password.length < 8) {
-      setError({ ...error, password: '@enter more than 8 digit password' });
+    } else if (user.password.length < 3) {
+      setError({ ...error, password: '@enter more than 3 digit password' });
       return false;
     }
     return true;
@@ -65,9 +66,10 @@ const Login = () => {
     setUser({ ...user, [name]: value });
   };
 
-  const submitInfo = e => {
+  const submitInfo = async e => {
     e.preventDefault();
     let ErrorList = validation();
+
     if (!validation()) {
       return;
     }
@@ -76,7 +78,19 @@ const Login = () => {
       email: user.email,
       password: user.password,
     };
-    console.log(logindata);
+
+    try {
+      let path = 'v1/admin/login';
+
+      let res = await post(path, logindata);
+      console.log('hhhh', res);
+      if (res.status) {
+        localStorage.setItem('token', res?.data?.token);
+        navigate('/');
+      }
+    } catch (error) {
+      console.log(error);
+    }
     // setloginStatus(true);
     // navigate('/');
   };
