@@ -10,8 +10,8 @@ const initialValue = {
   email: '',
   password: '',
 };
-const Login = () => {
-  const { redirectTo } = useSelector(state => state?.login);
+export const Login = () => {
+  const { redirectTo } = useSelector(state => state?.LoginSlice);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [user, setUser] = useState(initialValue);
@@ -79,12 +79,12 @@ const Login = () => {
     // navigate('/');
   };
 
-  const redirectUser = () => {
-    const token = JSON.parse(localStorage.getItem('token'));
-    if (token !== null && token !== undefined && token !== '') {
-      navigate('/');
-    }
-  };
+  // const redirectUser = () => {
+  //   const token = JSON.parse(localStorage.getItem('token'));
+  //   if (token !== null && token !== undefined && token !== '') {
+  //     navigate('/');
+  //   }
+  // };
   // useEffect(() => {
   //   redirectUser();
   // }, [redirectTo]);

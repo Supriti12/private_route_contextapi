@@ -22,12 +22,12 @@ const Home = () => {
           {data?.map((user, k) => {
             return (
               <div key={k + 1}>
-                <div class="card" style={{ width: '18rem' }}>
-                  <div class="card-body">
-                    <h5 class="card-title">
+                <div className="card" style={{ width: '18rem' }}>
+                  <div className="card-body">
+                    <h5 className="card-title">
                       {user.firstName} {user.lastName}
                     </h5>
-                    <p class="card-text">{user.email}</p>
+                    <p className="card-text">{user.email}</p>
                   </div>
                 </div>
               </div>

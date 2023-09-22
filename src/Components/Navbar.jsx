@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
-  const { LogoutToggle } = useSelector(state => state?.login);
+  const { LogoutToggle } = useSelector(state => state?.LoginSlice);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleclose = () => {
@@ -34,6 +34,11 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/">
                   Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to="/products">
+                  Products
                 </Link>
               </li>
               {LogoutToggle === true ? (

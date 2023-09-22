@@ -41,4 +41,4 @@ const LoginSlice = createSlice({
   extraReducers: builder => {},
 });
 export const { redirectToo, check_token, loginStatus, logout } = LoginSlice.actions;
-export default LoginSlice;
+export default LoginSlice.reducer;
