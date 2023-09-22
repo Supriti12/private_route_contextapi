@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginStatus } from '../Redux/Slice/LoginSlice';
 import LoginApi from '../Services/Auth';
 import { get, post, put } from '../utils/HttpClient';
+import './Login.css';
 
 const initialValue = {
   email: '',
@@ -94,28 +95,35 @@ export const Login = () => {
   // }, [dispatch]);
 
   return (
-    <div style={{ marginLeft: '20rem', width: '100%', height: '100vh' }}>
-      <div className="col-md-6 p-5 ">
-        <div className="card" style={{ margin: 'auto' }}>
-          <div className="card-header">Login </div>
-          <div className="card-body">
-            <form onSubmit={e => submitInfo(e)}>
-              <div className="form-group">
-                <label htmlFor="exampleInputEmail1">Email</label>
-                <input type="text" name="email" className="form-control" onChange={e => postUserData(e)} />
-                <span style={{ color: 'red' }}>{error.email}</span>
-              </div>
-              <div className="form-group">
-                <label htmlFor="exampleInputEmail1">Password</label>
-                <input type="password" name="password" className="form-control" onChange={e => postUserData(e)} />
-                <span style={{ color: 'red' }}>{error.password}</span>
-              </div>
-              <div className="form-group">
-                <button type="submit" className="btn btn-primary" style={{ marginRight: '500px', margin: 'auto' }}>
-                  Login
-                </button>
-              </div>
-            </form>
+    <div>
+      <div style={{ marginLeft: '20rem', width: '100%', height: '100vh' }}>
+        {/* <div className="col-md-6 p-5 "> */}
+        <div className="login-container">
+          <div className="login-card" style={{ margin: 'auto' }}>
+            <div className="login-card-header">
+              <h4>Login Form</h4>{' '}
+            </div>
+            <div className="login-card-body">
+              <form onSubmit={e => submitInfo(e)}>
+                <div className="login-form-group">
+                  <label htmlFor="exampleInputEmail1" style={{ color: 'white', fontFamily: 'arial', fontSize: '18px' }}>
+                    Email
+                  </label>
+                  <input type="login-text" name="email" className="form-control" onChange={e => postUserData(e)} />
+                  <span style={{ color: 'yellow' }}>{error.email}</span>
+                </div>
+                <div className="login-form-group" style={{ color: 'white', fontFamily: 'arial', fontSize: '18px' }}>
+                  <label htmlFor="exampleInputEmail1">Password</label>
+                  <input type="password" name="password" className="form-control" onChange={e => postUserData(e)} />
+                  <span style={{ color: 'yellow' }}>{error.password}</span>
+                </div>
+                <div className="login-button-group">
+                  <button type="submit" className="button">
+                    Login
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

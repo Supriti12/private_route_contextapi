@@ -1,0 +1,43 @@
+.login-container {
+  margin-top: 7%;
+  margin-left: 10%;
+  height: 25rem;
+  width: 24rem;
+  /* background: rgb(100, 8, 43); */
+  background-image: url(https://imgv3.fotor.com/images/share/Free-blue-gradient-pattern-background-from-Fotor.jpg);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+  border-radius: 1rem;
+}
+
+.login-card {
+  padding-top: 70px;
+  height: 80%;
+  width: 80%;
+}
+
+.login-card-header {
+  color: azure;
+  height: 10%;
+  margin-top: 0px;
+  padding-bottom: 2px;
+  margin-left: 5rem;
+  padding-bottom: 50px;
+}
+
+.login-form-group {
+  height: 5rem;
+  width: 100%;
+}
+
+.button {
+  margin-left: 6rem;
+  margin-top: 20px;
+  background-color: rgb(90, 16, 78);
+  color: azure;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: orange;
+  color: black;
+}

@@ -11,13 +11,14 @@
 }
 .cardItem {
   width: 20rem;
-  min-height: 10rem;
+  height: 30rem;
   /* background-color: black; */
   margin: 2rem 2rem;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   border-radius: 1rem;
   overflow: hidden;
   padding: 0px 2px;
+  overflow-y: auto;
 }
 .containerItem {
   padding: 0.5rem 0.5rem;
@@ -28,4 +29,9 @@
   width: 70%;
   height: 20rem;
   padding-top: 10px;
+}
+.vortex {
+  justify-content: center;
+  align-items: center;
+  margin-left: 15%;
 }

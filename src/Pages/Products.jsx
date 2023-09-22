@@ -3,25 +3,32 @@ import { Vortex } from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { ProductFetch } from '../Redux/Slice/ProductSlice';
 import './Products.css';
+import ReactPaginate from 'react-paginate';
 
 const Products = () => {
   const { prod } = useSelector(state => state.ProductSlice);
-  const [visible, setVisible] = useState(4);
-  const [totaldata, setTotaldata] = useState(20);
+  const [visible, setVisible] = useState(0);
+  // const [totaldata, setTotaldata] = useState(20);
+  const limit = 3;
+  let pages = Math.ceil(prod.length / 3);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(ProductFetch());
   }, [dispatch]);
   console.log(prod);
 
-  const showMore = () => {
-    setVisible(prevValue => prevValue + 4);
+  const handleChange = e => {
+    // console.log('pagination', e);
+    let currentPage = e.selected + 1;
+    let index = (currentPage - 1) * limit;
+    setVisible(index);
   };
   return (
     <div className="containerParent">
       <div className="rowItem">
         <div className="cards">
-          {prod?.slice(0, visible)?.map((item, k) => {
+          {prod?.slice(visible, visible + limit)?.map((item, k) => {
             return (
               <>
                 <div class="cardItem">
@@ -42,13 +49,13 @@ const Products = () => {
             );
           })}
         </div>
-        {totaldata !== visible ? (
+        {/* {totaldata !== visible ? (
           <div className="vortex">
             <span style={{ marginLeft: '120px' }} onClick={showMore}>
               {' '}
               <Vortex
                 visible={true}
-                height="50"
+                height="65"
                 width="600"
                 ariaLabel="vortex-loading"
                 align="center"
@@ -60,7 +67,28 @@ const Products = () => {
           </div>
         ) : (
           <></>
-        )}
+        )} */}
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handleChange}
+          Displayed
+          Page
+          Range={5}
+          pageCount={pages}
+          previousLabel="< previous"
+          renderOnZeroPageCount={null}
+          breakClassName={'page-item'}
+          breakLinkClassName={'page-link'}
+          containerClassName={'pagination'}
+          pageClassName={'page-item'}
+          pageLinkClassName={'page-link'}
+          previousClassName={'page-item'}
+          previousLinkClassName={'page-link'}
+          nextClassName={'page-item'}
+          nextLinkClassName={'page-link'}
+          activeClassName={'active'}
+        />
       </div>
     </div>
   );
