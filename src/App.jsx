@@ -6,6 +6,8 @@ import CheckAuth from './CheckAuth';
 import { useEffect } from 'react';
 import { check_token } from './Redux/Slice/LoginSlice';
 import Products from './Pages/Products';
+import DetailsForm from './Pages/DetailsForm';
+import StudentDetails from './Pages/StudentDetails';
 function App() {
   useEffect(() => {
     check_token();
@@ -19,6 +21,8 @@ function App() {
             <Route element={<Navbar />}>
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/detailsform" element={<DetailsForm />} />
+              <Route path="/details" element={<StudentDetails />} />
             </Route>
           </Route>
         </Routes>

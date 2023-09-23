@@ -8,8 +8,12 @@ const initialState = {
   error: '',
 };
 export const ProductFetch = createAsyncThunk('product', async () => {
-  const res = await axios.get('https://fakestoreapi.com/products');
-  return res?.data;
+  try {
+    const res = await axios.get('https://fakestoreapi.com/products');
+    return res?.data;
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 const ProductSlice = createSlice({

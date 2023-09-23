@@ -41,6 +41,11 @@ const Navbar = () => {
                   Products
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to="/detailsform">
+                  Details Form
+                </Link>
+              </li>
               {LogoutToggle === true ? (
                 <>
                   <li className="nav-item">

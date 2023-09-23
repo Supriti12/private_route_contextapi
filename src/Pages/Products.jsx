@@ -6,7 +6,7 @@ import './Products.css';
 import ReactPaginate from 'react-paginate';
 
 const Products = () => {
-  const { prod } = useSelector(state => state.ProductSlice);
+  const { prod } = useSelector(state => state?.ProductSlice);
   const [visible, setVisible] = useState(0);
   // const [totaldata, setTotaldata] = useState(20);
   const limit = 3;
@@ -19,7 +19,7 @@ const Products = () => {
   console.log(prod);
 
   const handleChange = e => {
-    // console.log('pagination', e);
+    console.log('pagination', e);
     let currentPage = e.selected + 1;
     let index = (currentPage - 1) * limit;
     setVisible(index);
@@ -68,27 +68,29 @@ const Products = () => {
         ) : (
           <></>
         )} */}
-        <ReactPaginate
-          breakLabel="..."
-          nextLabel="next >"
-          onPageChange={handleChange}
-          Displayed
-          Page
-          Range={5}
-          pageCount={pages}
-          previousLabel="< previous"
-          renderOnZeroPageCount={null}
-          breakClassName={'page-item'}
-          breakLinkClassName={'page-link'}
-          containerClassName={'pagination'}
-          pageClassName={'page-item'}
-          pageLinkClassName={'page-link'}
-          previousClassName={'page-item'}
-          previousLinkClassName={'page-link'}
-          nextClassName={'page-item'}
-          nextLinkClassName={'page-link'}
-          activeClassName={'active'}
-        />
+        <div style={{ marginLeft: '30rem' }}>
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel="next >"
+            onPageChange={handleChange}
+            Displayed
+            Page
+            Range={5}
+            pageCount={pages}
+            previousLabel="< previous"
+            renderOnZeroPageCount={null}
+            breakClassName={'page-item'}
+            breakLinkClassName={'page-link'}
+            containerClassName={'pagination'}
+            pageClassName={'page-item'}
+            pageLinkClassName={'page-link'}
+            previousClassName={'page-item'}
+            previousLinkClassName={'page-link'}
+            nextClassName={'page-item'}
+            nextLinkClassName={'page-link'}
+            activeClassName={'active'}
+          />
+        </div>
       </div>
     </div>
   );
