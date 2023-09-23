@@ -111,13 +111,13 @@ const DetailsForm = () => {
                       type="text"
                       placeholder="Enter your degree"
                       name={`degree_${index}`}
-                      // value={data.degree}
+                      value={data.degree}
                       onChange={e => {
                         setFormarray(prev => {
                           console.log(prev);
                           prev[index].degree = e.target.value;
 
-                          return prev;
+                          return JSON.parse(JSON.stringify(prev));
                         });
                       }}
                     />
