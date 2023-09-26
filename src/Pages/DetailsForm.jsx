@@ -1,194 +1,3 @@
-// import React, { useState } from 'react';
-// import './DetailsForm.css';
-// import { Link } from 'react-router-dom';
-// import { collection, addDoc } from 'firebase/firestore';
-// import { db } from '../Firebase';
-
-// const DetailsForm = () => {
-//   // const [formdata, setFormdata] = useState({ degree: '', college: '', branch: '' });
-//   const [formarray, setFormarray] = useState([{ degree: '', college: '', branch: '' }]);
-//   const initialvalues = {
-//     firstname: '',
-//     lastname: '',
-//     email: '',
-//     phone: '',
-//     address: '',
-//     // degree: '',
-//     // college: '',
-//     // branch: '',
-//     gender: '',
-//     catagory: '',
-//   };
-//   const [user, setUser] = useState(initialvalues);
-//   const [error, setError] = useState('');
-
-//   let name, value;
-//   const postUserData = e => {
-//     name = e.target.name;
-//     value = e.target.value;
-//     setUser({ ...user, [name]: value });
-//   };
-
-//   // console.log('formdata', formarray);
-//   let handleChange = (i, e) => {
-//     let newFormdata = [...formarray];
-//     newFormdata[i][e.target.name] = e.target.value;
-//     setFormarray(newFormdata);
-//   };
-
-//   const addFormFields = () => {
-//     setFormarray([...formarray, { degree: '', college: '', branch: '' }]);
-//   };
-
-//   // let handleSubmit = e => {
-//   //   e.preventDefault();
-//   //   alert(JSON.stringify(formarray));
-//   // };
-
-//   let removeFormFields = i => {
-//     let newFormValues = [...formarray];
-//     newFormValues.splice(i, 1);
-//     setFormarray(newFormValues);
-//   };
-//   console.log(user);
-
-//   const submitInfo = async e => {
-//     e.preventDefault();
-//     const docRef = await addDoc(collection(db, 'users'), {});
-//   };
-
-//   console.log('formarray', formarray);
-//   return (
-//     <div style={{ marginLeft: '20rem', width: '100%', height: '100vh' }}>
-//       <form>
-//         <div className="Details-container">
-//           <div className="General-Details">
-//             <div>
-//               <label>FirstName:</label>
-//               <input
-//                 type="text"
-//                 placeholder="Enter your First Name"
-//                 onChange={e => postUserData(e)}
-//                 autoFocus
-//                 name=""
-//               />
-
-//               <label>LastName:</label>
-//               <input type="text" placeholder="Enter your Last name" onChange={e => postUserData(e)} />
-//             </div>
-//             <div>
-//               <label>Email:</label>
-//               <input type="email" placeholder="Enter your Email" onChange={e => postUserData(e)} />
-//               <label>Phone:</label>
-//               <input type="number" placeholder="Enter your Number" onChange={e => postUserData(e)} />
-//             </div>
-//             <div>
-//               <label>Address:</label>
-//               <textarea type="address" placeholder="Enter your Address" onChange={e => postUserData(e)} />
-//             </div>
-//             <div>
-//               <label>Gender:</label>
-//               <input type="radio" value="Male" name="gender" checked /> Male
-//               <input type="radio" value="Female" name="gender" /> Female
-//               <input type="radio" value="Other" name="gender" /> Other
-//             </div>
-//             <div>
-//               <label>Technology Catagory:</label>
-//               <input type="checkbox" value="Backend" name="catagory" onChange={e => postUserData(e)} />
-//               Backend
-//               <input type="checkbox" value="Frontend" name="catagory" onChange={e => postUserData(e)} />
-//               Frontend
-//             </div>
-//           </div>
-
-//           {formarray?.map((data, index) => {
-//             return (
-//               <>
-//                 <div className="Education-Details" key={index}>
-//                   <div>
-//                     <label>Degree:</label>
-//                     <input
-//                       type="text"
-//                       placeholder="Enter your degree"
-//                       name={`degree_${index}`}
-//                       value={data.degree}
-//                       onChange={e => {
-//                         setFormarray(prev => {
-//                           console.log(prev);
-//                           prev[index].degree = e.target.value;
-
-//                           return JSON.parse(JSON.stringify(prev));
-//                         });
-//                       }}
-//                     />
-//                   </div>
-//                   <div>
-//                     <label>College:</label>
-//                     <input
-//                       type="text"
-//                       placeholder="Enter your College name"
-//                       name="college"
-//                       // value={data.college}
-//                       onChange={e => {
-//                         setFormarray(prev => {
-//                           console.log(prev);
-//                           prev[index].college = e.target.value;
-
-//                           return prev;
-//                         });
-//                       }}
-//                     />
-//                   </div>
-//                   <div>
-//                     <label>Branch:</label>
-//                     <input
-//                       type="text"
-//                       placeholder="Enter your Branch name"
-//                       name="branch"
-//                       // value={data.branch}
-//                       onChange={e => {
-//                         setFormarray(prev => {
-//                           console.log(prev);
-//                           prev[index].branch = e.target.value;
-
-//                           return prev;
-//                         });
-//                       }}
-//                     />
-//                   </div>
-//                   <div>
-//                     {/* <button className="button add" type="button" onClick={() => addFormFields()}>
-//                       +
-//                     </button> */}
-//                     {index ? (
-//                       <button type="button" className="button remove" onClick={() => removeFormFields(index)}>
-//                         -
-//                       </button>
-//                     ) : null}
-//                     {/* <button className="button remove" type="button" onClick={() => removeFormFields()}>
-//                       -
-//                     </button> */}
-//                   </div>
-//                 </div>
-//               </>
-//             );
-//           })}
-//           <button className="button add" type="button" onClick={() => addFormFields()}>
-//             +
-//           </button>
-//         </div>
-//         <div>
-//           <button type="submit" onClick={submitInfo} className="btn btn-success">
-//             Submit
-//           </button>
-//         </div>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default DetailsForm;
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './DetailsForm.css';
@@ -196,11 +5,12 @@ import 'firebase/auth';
 import { collection, addDoc } from 'firebase/firestore';
 import { useAuth } from '../Context/UserProvider';
 import { db } from '../Firebase';
+import { toast } from 'react-toastify';
 
 const DetailsForm = () => {
   const navigate = useNavigate();
   const { data, setData } = useAuth();
-  const [formData, setFormData] = useState({
+  const initData = {
     firstname: '',
     lastname: '',
     email: '',
@@ -209,7 +19,62 @@ const DetailsForm = () => {
     gender: 'male',
     categories: [],
     education: [{ degree: '', branch: '', college: '' }],
-  });
+  };
+  const [formData, setFormData] = useState(initData);
+
+  console.log('formDatadd', formData);
+
+  const handleChangeForm = e => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const [error, setError] = useState({});
+  // const [image, setImage] = useState([]);
+
+  const validation = () => {
+    const error = {};
+    if (!formData.firstname) {
+      setError({ ...error, firstname: '@firstname is required' });
+      return false;
+    }
+    if (!formData.lastname) {
+      setError({ ...error, lastname: '@lastname is required' });
+      return false;
+    }
+    if (!formData.email) {
+      setError({ ...error, email: '@email is required' });
+      return false;
+    } else if (
+      !/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        formData.email
+      )
+    ) {
+      setError({ ...error, email: '@enter valid Email' });
+      return false;
+    }
+    if (!formData.phone) {
+      setError({ ...error, phone: '@enter valid phone' });
+      return false;
+    }
+    if (!formData.address) {
+      setError({ ...error, address: '@enter valid address' });
+      return false;
+    }
+    if (!formData.gender) {
+      setError({ ...error, gender: '@enter valid gender' });
+      return false;
+    }
+    // if (!formData.categories.isrequired) {
+    //   setError({ ...error, categories: '@enter valid categories' });
+    //   return false;
+    // }
+    // if (!formData.education.degree.isrequired) {
+    //   setError({ ...error, degree: '@enter valid degree' });
+    //   return false;
+    // }
+    return true;
+  };
 
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
@@ -220,6 +85,7 @@ const DetailsForm = () => {
 
   const handleCheckboxChange = e => {
     const { name, checked } = e.target;
+    // console.log("chechkk",name,checked)
     const updatedCategories = checked
       ? [...formData.categories, name]
       : formData.categories.filter(category => category !== name);
@@ -241,6 +107,12 @@ const DetailsForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    let errorlist = validation();
+    if (!validation()) {
+      toast.error('Please fill all fields');
+      return;
+    }
+    setError(errorlist);
     const docRef = await addDoc(collection(db, 'users'), {
       ...formData,
       firstname: formData.firstname,
@@ -267,6 +139,8 @@ const DetailsForm = () => {
   };
   console.log(data, 'jhkl');
 
+  
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -275,21 +149,13 @@ const DetailsForm = () => {
             <div className="row">
               <div className="col-md-5">
                 <label>Firstname:</label>
-                <input
-                  type="text"
-                  name="firstname"
-                  value={formData.firstname}
-                  onChange={e => setFormData({ ...formData, firstname: e.target.value })}
-                />
+                <input type="text" name="firstname" value={formData.firstname} onChange={e => handleChangeForm(e)} />
+                <span style={{ color: 'yellow' }}>{error.firstname}</span>
               </div>
               <div className="col-md-5">
                 <label>Lastname:</label>
-                <input
-                  type="text"
-                  name="lastname"
-                  value={formData.lastname}
-                  onChange={e => setFormData({ ...formData, lastname: e.target.value })}
-                />
+                <input type="text" name="lastname" value={formData.lastname} onChange={e => handleChangeForm(e)} />
+                <span style={{ color: 'yellow' }}>{error.lastname}</span>
               </div>
             </div>
           </div>
@@ -301,8 +167,9 @@ const DetailsForm = () => {
                   type="email"
                   name="email"
                   value={formData.email}
-                  onChange={e => setFormData({ ...formData, email: e.target.value })}
+                  onChange={e => handleChangeForm(e)}
                 />
+                <span style={{ color: 'yellow' }}>{error.email}</span>
               </div>
               <div className="col-md-5">
                 <label>Phone:</label>
@@ -310,8 +177,8 @@ const DetailsForm = () => {
                   type="text"
                   name="phone"
                   value={formData.phone}
-                  onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                />
+                  onChange={e => handleChangeForm(e)}/>
+                <span style={{ color: 'yellow' }}>{error.phone}</span>
               </div>
             </div>
           </div>
@@ -323,8 +190,9 @@ const DetailsForm = () => {
                   type="text"
                   name="address"
                   value={formData.address}
-                  onChange={e => setFormData({ ...formData, address: e.target.value })}
+                 onChange={e => handleChangeForm(e)}
                 />
+                <span style={{ color: 'yellow' }}>{error.address}</span>
               </div>
             </div>
             <div className="col-md-5">
@@ -337,7 +205,7 @@ const DetailsForm = () => {
                     name="gender"
                     value="male"
                     checked={formData.gender === 'male'}
-                    onChange={e => setFormData({ ...formData, gender: e.target.value })}
+                   onChange={e => handleChangeForm(e)}
                   />
                   Male
                 </label>
@@ -348,10 +216,11 @@ const DetailsForm = () => {
                     name="gender"
                     value="female"
                     checked={formData.gender === 'female'}
-                    onChange={e => setFormData({ ...formData, gender: e.target.value })}
+                    onChange={e => handleChangeForm(e)}
                   />
                   Female
                 </label>
+                <span style={{ color: 'yellow' }}>{error.gender}</span>
               </div>
             </div>
             <div className="col-md-5">
@@ -377,7 +246,7 @@ const DetailsForm = () => {
               </label>
             </div>
           </div>
-          {/* </div> */}
+        
 
           <button type="button" className="submit" onClick={addEducationField}>
             +
@@ -429,6 +298,8 @@ const DetailsForm = () => {
               <div style={{ marginLeft: '12rem' }}></div>
             </div>
           ))}
+          {/* <label>Image:</label>
+          <input type="file" name="image" onChange={e => setImage(URL.createObjectURL(e.target.files[0]))} /> */}
 
           <div style={{ paddingLeft: '14rem' }}>
             <button className="submit" type="submit">

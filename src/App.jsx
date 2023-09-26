@@ -8,12 +8,16 @@ import { check_token } from './Redux/Slice/LoginSlice';
 import Products from './Pages/Products';
 import DetailsForm from './Pages/DetailsForm';
 import StudentDetails from './Pages/StudentDetails';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   useEffect(() => {
     check_token();
   }, []);
   return (
     <>
+      <ToastContainer />
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />

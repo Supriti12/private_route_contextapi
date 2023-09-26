@@ -16,6 +16,10 @@ const columns = [
     selector: row => row.email,
   },
   {
+    name: 'Phone',
+    selector: row => row.phone,
+  },
+  {
     name: 'Address',
     selector: row => row.address,
   },
@@ -53,6 +57,16 @@ const columns = [
 const StudentDetails = () => {
   const { data, setData } = useAuth();
   let [searchdata, setSearchdata] = useState(data);
+  const [file, setFile] = useState();
+
+  function Change(e) {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
+
+  // let img = media => {
+  //   return `http://localhost:5173/` + `${media}`;
+  // };
 
   const handleChange = e => {
     let filterdata = [];
@@ -103,8 +117,15 @@ const StudentDetails = () => {
         onChange={handleChange}
         autoFocus
       />
+      {/* <div>
+        <img src={img} />
+      </div> */}
+
+      <h2>Add Image:</h2>
+      <input type="file" onChange={Change} />
+      <img src={file} style={{ width: '100px' }} />
+
       <DataTable columns={columns} data={searchdata} />
-      {/* <DataTable columns={columns} filterdata={data} /> */}
     </div>
   );
 };
