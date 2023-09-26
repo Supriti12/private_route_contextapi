@@ -163,40 +163,28 @@ const DetailsForm = () => {
             <div className="row">
               <div className="col-md-5">
                 <label>Email:</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={e => handleChangeForm(e)}
-                />
+                <input type="email" name="email" value={formData.email} onChange={e => handleChangeForm(e)} />
                 <span style={{ color: 'yellow' }}>{error.email}</span>
               </div>
               <div className="col-md-5">
                 <label>Phone:</label>
-                <input
-                  type="text"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={e => handleChangeForm(e)}/>
+                <input type="text" name="phone" value={formData.phone} onChange={e => handleChangeForm(e)} />
                 <span style={{ color: 'yellow' }}>{error.phone}</span>
               </div>
             </div>
           </div>
           <div className="general-info">
-            <div className="row">
-              <div className="col-ml-12">
+            <div className="col-md-9" style={{ marginLeft: '12px',paddingTop:"1px",marginBottom:"20px" }}>
+              <div className="row">
+                {/* <div className="col-ml-12"> */}
                 <label>Address:</label>
-                <input
-                  type="text"
-                  name="address"
-                  value={formData.address}
-                 onChange={e => handleChangeForm(e)}
-                />
+                <input type="text" name="address" value={formData.address} onChange={e => handleChangeForm(e)} />
                 <span style={{ color: 'yellow' }}>{error.address}</span>
               </div>
             </div>
-            <div className="col-md-5">
-              <div className="row">
+            {/* <div className="col-md-5"> */}
+            <div className="row">
+              <div className="col-md-5">
                 <label>Gender:</label>
 
                 <label>
@@ -205,7 +193,7 @@ const DetailsForm = () => {
                     name="gender"
                     value="male"
                     checked={formData.gender === 'male'}
-                   onChange={e => handleChangeForm(e)}
+                    onChange={e => handleChangeForm(e)}
                   />
                   Male
                 </label>
@@ -246,7 +234,6 @@ const DetailsForm = () => {
               </label>
             </div>
           </div>
-        
 
           <button type="button" className="submit" onClick={addEducationField}>
             +

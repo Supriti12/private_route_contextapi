@@ -1,8 +1,9 @@
 .Details-container {
   margin-top: 5rem;
-  background-color: rgb(248, 97, 147);
+  /* background-color: rgb(248, 97, 147); */
+  background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20210814/pngtree-blue-purple-simple-gradient-background-image_760572.jpg');
   padding-left: 10rem;
-  padding-top: 25px;
+  padding-top: 6rem;
   padding-bottom: 25px;
 
   margin-top: 7%;
