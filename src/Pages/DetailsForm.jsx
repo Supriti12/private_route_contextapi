@@ -150,12 +150,12 @@ const DetailsForm = () => {
               <div className="col-md-5">
                 <label>Firstname:</label>
                 <input type="text" name="firstname" value={formData.firstname} onChange={e => handleChangeForm(e)} />
-                <span style={{ color: 'yellow' }}>{error.firstname}</span>
+                <span style={{ color: 'red' }}>{error.firstname}</span>
               </div>
               <div className="col-md-5">
                 <label>Lastname:</label>
                 <input type="text" name="lastname" value={formData.lastname} onChange={e => handleChangeForm(e)} />
-                <span style={{ color: 'yellow' }}>{error.lastname}</span>
+                <span style={{ color: 'red' }}>{error.lastname}</span>
               </div>
             </div>
           </div>
@@ -164,22 +164,22 @@ const DetailsForm = () => {
               <div className="col-md-5">
                 <label>Email:</label>
                 <input type="email" name="email" value={formData.email} onChange={e => handleChangeForm(e)} />
-                <span style={{ color: 'yellow' }}>{error.email}</span>
+                <span style={{ color: 'red' }}>{error.email}</span>
               </div>
               <div className="col-md-5">
                 <label>Phone:</label>
                 <input type="text" name="phone" value={formData.phone} onChange={e => handleChangeForm(e)} />
-                <span style={{ color: 'yellow' }}>{error.phone}</span>
+                <span style={{ color: 'red' }}>{error.phone}</span>
               </div>
             </div>
           </div>
           <div className="general-info">
-            <div className="col-md-9" style={{ marginLeft: '12px',paddingTop:"1px",marginBottom:"20px" }}>
+            <div className="col-md-9" style={{ marginLeft: '12px', paddingTop: '1px', marginBottom: '20px' }}>
               <div className="row">
                 {/* <div className="col-ml-12"> */}
                 <label>Address:</label>
                 <input type="text" name="address" value={formData.address} onChange={e => handleChangeForm(e)} />
-                <span style={{ color: 'yellow' }}>{error.address}</span>
+                <span style={{ color: 'red' }}>{error.address}</span>
               </div>
             </div>
             {/* <div className="col-md-5"> */}
@@ -208,7 +208,7 @@ const DetailsForm = () => {
                   />
                   Female
                 </label>
-                <span style={{ color: 'yellow' }}>{error.gender}</span>
+                <span style={{ color: 'red' }}>{error.gender}</span>
               </div>
             </div>
             <div className="col-md-5">
@@ -241,11 +241,13 @@ const DetailsForm = () => {
           {formData.education.map((edu, index) => (
             <div className="Education-Details">
               <label style={{ marginLeft: '12rem', paddingTop: '10px', paddingBottom: '10px' }}>
-                Education Details:
+                <h5>Education Details:</h5>
               </label>
               <div key={index}>
                 <div className="edu">
-                  <label>Degree: </label>
+                  <div>
+                    <label>Degree: </label>
+                  </div>
                   <input
                     type="text"
                     name="degree"
@@ -256,7 +258,9 @@ const DetailsForm = () => {
                 </div>
 
                 <div className="edu">
-                  <label>Branch: </label>
+                  <div>
+                    <label>Branch: </label>
+                  </div>
                   <input
                     type="text"
                     name="branch"
@@ -267,7 +271,9 @@ const DetailsForm = () => {
                 </div>
 
                 <div className="edu">
-                  <label>College: </label>
+                  <div>
+                    <label>College: </label>
+                  </div>
                   <input
                     type="text"
                     name="college"
