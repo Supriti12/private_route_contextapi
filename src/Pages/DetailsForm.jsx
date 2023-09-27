@@ -25,11 +25,13 @@ const DetailsForm = () => {
   console.log('formDatadd', formData);
 
   const handleChangeForm = e => {
+    // validation();
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   const [error, setError] = useState({});
+  const [eduError, setEduError] = useState([]);
   // const [image, setImage] = useState([]);
 
   const validation = () => {
@@ -65,18 +67,52 @@ const DetailsForm = () => {
       setError({ ...error, gender: '@enter valid gender' });
       return false;
     }
-    // if (!formData.categories.isrequired) {
-    //   setError({ ...error, categories: '@enter valid categories' });
-    //   return false;
-    // }
+    if (formData.categories.length == 0) {
+      setError({ ...error, categories: '@enter valid categories' });
+      return false;
+    }
+    if (formData.education.length !== 0) {
+      let details = formData.education;
+      for (let i = 0; i < details.length; i++) {
+        if (!details[i].degree || !details[i].branch || !details[i].college) {
+          let obj = {};
+          // if (!details[i].degree) {
+          //   obj.degree = 'Enter degree';
+          // }
+          // if (!details[i].branch) {
+          //   obj.branch = 'Enter Branch';
+          // }
+          // if (!details[i].college) {
+          //   obj.college = 'Enter College';
+          // }
+          let newarr = [...eduError];
+          newarr[i] = obj;
+
+          setEduError(newarr);
+          return false;
+        }
+        else{
+          console.log(`details ${i}`)
+          let newarr = [...eduError];
+          newarr[i] = null;
+
+          setEduError(newarr);
+        }
+      }
+    }
+    
+
+    // if()
     // if (!formData.education.degree.isrequired) {
     //   setError({ ...error, degree: '@enter valid degree' });
     //   return false;
     // }
     return true;
   };
+  console.log('eduError', eduError);
 
   const handleInputChange = (e, index) => {
+    validation();
     const { name, value } = e.target;
     const updatedEducation = [...formData.education];
     updatedEducation[index][name] = value;
@@ -138,8 +174,6 @@ const DetailsForm = () => {
     navigate('/display');
   };
   console.log(data, 'jhkl');
-
-  
 
   return (
     <div>
@@ -255,6 +289,7 @@ const DetailsForm = () => {
                     onChange={e => handleInputChange(e, index)}
                     placeholder="Enter your Degree"
                   />
+                  <span style={{ color: 'red' }}>{eduError[index]?.degree}</span>
                 </div>
 
                 <div className="edu">
@@ -268,6 +303,7 @@ const DetailsForm = () => {
                     onChange={e => handleInputChange(e, index)}
                     placeholder="Enter your Branch"
                   />
+                  <span style={{ color: 'red' }}>{eduError[index]?.branch}</span>
                 </div>
 
                 <div className="edu">
@@ -281,6 +317,7 @@ const DetailsForm = () => {
                     onChange={e => handleInputChange(e, index)}
                     placeholder="Enter your College"
                   />
+                  <span style={{ color: 'red' }}>{eduError[index]?.college}</span>
                 </div>
               </div>
               {formData.education.length > 1 && (

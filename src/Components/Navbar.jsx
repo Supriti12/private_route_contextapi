@@ -46,6 +46,11 @@ const Navbar = () => {
                   Details Form
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link active" aria-current="page" to="/contact">
+                  Contact
+                </Link>
+              </li>
               {LogoutToggle === true ? (
                 <>
                   <li className="nav-item">

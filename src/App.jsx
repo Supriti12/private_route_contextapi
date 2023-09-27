@@ -10,6 +10,8 @@ import DetailsForm from './Pages/DetailsForm';
 import StudentDetails from './Pages/StudentDetails';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ProductDetails from './Pages/ProductDetails';
+import Contact from './Pages/Contact';
 
 function App() {
   useEffect(() => {
@@ -27,6 +29,8 @@ function App() {
               <Route path="/products" element={<Products />} />
               <Route path="/detailsform" element={<DetailsForm />} />
               <Route path="/display" element={<StudentDetails />} />
+              <Route path='/productdetails/:id' element={<ProductDetails/>}/>
+              <Route path='/contact' element={<Contact/>}/>
             </Route>
           </Route>
         </Routes>

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ProductFetch, toggleDescription } from '../Redux/Slice/ProductSlice';
 import './Products.css';
 import ReactPaginate from 'react-paginate';
+import { Link } from 'react-router-dom';
 
 const Products = () => {
   const { prod, loading } = useSelector(state => state?.ProductSlice);
@@ -30,11 +31,11 @@ const Products = () => {
         <div className="cards">
           {prod?.slice(visible, visible + limit)?.map((item, k) => {
             return (
-              <div class="cardItem" key={k}>
+              <div className="cardItem" key={k}>
                 <div className="cardImage">
                   <img src={item.image} alt="Avatar" style={{ width: '100%', height: '100%' }} />
                 </div>
-                <div class="containerItem">
+                <div className="containerItem">
                   <h4>
                     <b>{item.title}</b>
                   </h4>
@@ -43,9 +44,12 @@ const Products = () => {
                   </h6>
                  
                   {item.showDescription ? <p>{item.description}</p> :<>{item.description.slice(0,35) +'...'}</>}
-                  <button className="button" onClick={() => dispatch(toggleDescription(item.id))}>
-                    {item.showDescription ? 'Show Less' : 'Show More'}
-                  </button>
+                  <Link onClick={() => dispatch(toggleDescription(item.id))}>
+                    {item.showDescription ? '...Show Less' : 'Show More...'}
+                  </Link>
+                  <div>
+                    <Link className='btn btn-success' to={`/productdetails/${item.id}`} style={{marginLeft:"6rem"}}>Details</Link>
+                  </div>
                 </div>
               </div>
             );
