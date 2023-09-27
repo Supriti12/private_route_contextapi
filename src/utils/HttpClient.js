@@ -89,3 +89,4 @@ function checkingAuth() {
 }
 
 export { requestData, fileUpload, get, post, put, deletemethod, BASE_URL };
+

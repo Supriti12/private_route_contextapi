@@ -71,14 +71,11 @@ const StudentDetails = () => {
   const handleChange = e => {
     let filterdata = [];
     filterdata = data.filter(item => {
-      const lowerCase = item.firstname.toLowerCase();
-      const email = item.email;
+      const lowerCase = JSON.stringify(item).toLowerCase();
       if (e.target.value == '') {
         return true;
       } else {
-        // console.log(e.target.value);
-        return lowerCase.includes(e.target.value);
-        // return JSON.stringify(data);
+        return lowerCase.includes(e.target.value.toLowerCase());
       }
     });
 
