@@ -40,6 +40,7 @@ const Contact = () => {
 
   function closeModal() {
     setIsOpen(false);
+    setUser(initialvalues)
   }
 
   const postUserData=(e)=>{
@@ -58,6 +59,7 @@ const Contact = () => {
     }
      setContactUser([...contactUser, user]);
      setIsOpen(false);
+     setUser(initialvalues);
     // console.log(data)
     
   }
@@ -102,7 +104,7 @@ const Contact = () => {
           <h2 ref={_subtitle => (subtitle = _subtitle)} style={{ marginLeft: '3rem' }}>
             Hello User
           </h2>
-
+            
           <button className="button" onClick={closeModal}>
             close
           </button>
