@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import React from 'react';
 
 const initialState = {
   loading: false,
@@ -19,14 +18,25 @@ export const ProductFetch = createAsyncThunk('product', async () => {
 const ProductSlice = createSlice({
   name: 'product',
   initialState,
-  reducers: {},
+  reducers: {
+    toggleDescription: (state, action) => {
+      const item = state.prod.find(item => item.id === action.payload);
+      if (item) {
+        item.showDescription = !item.showDescription;
+      }
+    },
+  },
   extraReducers: builder => {
     builder.addCase(ProductFetch.pending, state => {
       state.loading = true;
     });
     builder.addCase(ProductFetch.fulfilled, (state, { payload }) => {
       state.loading = false;
-      state.prod = payload;
+      // state.prod = payload;
+      state.prod = payload.map(item => ({
+        ...item,
+        showDescription: false,
+      }));
     });
     builder.addCase(ProductFetch.rejected, (state, { payload }) => {
       state.loading = false;
@@ -34,5 +44,6 @@ const ProductSlice = createSlice({
     });
   },
 });
+export const { toggleDescription } = ProductSlice.actions;
 
 export default ProductSlice.reducer;
