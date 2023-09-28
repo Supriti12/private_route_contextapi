@@ -270,7 +270,7 @@ const DetailsForm = () => {
             </div>
           </div>
 
-          <button type="button" className="submit" onClick={addEducationField}>
+          <button type="button" className="submit" onClick={addEducationField} style={{ background: 'blue' }}>
             +
           </button>
           {formData.education.map((edu, index) => (
@@ -322,7 +322,12 @@ const DetailsForm = () => {
                 </div>
               </div>
               {formData.education.length > 1 && (
-                <button type="button" className="submit" onClick={() => removeEducationField(index)}>
+                <button
+                  type="button"
+                  className="submit"
+                  onClick={() => removeEducationField(index)}
+                  style={{ background: 'blue' }}
+                >
                   -
                 </button>
               )}

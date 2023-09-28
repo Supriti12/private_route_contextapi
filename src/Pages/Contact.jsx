@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import moment from 'moment';
 
 const customStyles = {
   content: {
@@ -21,14 +22,20 @@ const customStyles = {
  const initialvalues={
   name:"",
   email:"",
-  password:""
+  password:"",
+  date:''
  }
+
 const Contact = () => {
   let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
   const [user,setUser]=useState(initialvalues)
   const {contactUser,setContactUser}=useAuth()
   const navigate=useNavigate();
+
+  const day = moment().format('MMMM DD YYYY');
+  const time = moment().format('HH mm ss');
+
 
   function openModal() {
     setIsOpen(true);
@@ -55,7 +62,8 @@ const Contact = () => {
     let data={
       name:user.name,
       email:user.email,
-      password:user.password
+      password:user.password,
+      date:user.date
     }
      setContactUser([...contactUser, user]);
      setIsOpen(false);
@@ -78,7 +86,14 @@ const Contact = () => {
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
                 {users.password}
               </Typography>
+              <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                {users.date}
+              </Typography>
             </CardContent>
+            <div>
+              <p> Today's date is {day} </p>
+              <p> The time is {time} </p>
+            </div>
           </>
         );
       })}
@@ -89,7 +104,7 @@ const Contact = () => {
       <button className="button" onClick={openModal}>
         Open Modal
       </button>
-      
+
       <Box sx={{ minWidth: 275 }}>
         <Card variant="outlined">{card}</Card>
       </Box>
@@ -104,7 +119,7 @@ const Contact = () => {
           <h2 ref={_subtitle => (subtitle = _subtitle)} style={{ marginLeft: '3rem' }}>
             Hello User
           </h2>
-            
+
           <button className="button" onClick={closeModal}>
             close
           </button>
@@ -146,6 +161,19 @@ const Contact = () => {
               value={user.password}
               onChange={e => postUserData(e)}
             />
+          </div>
+          <div className="general-info">
+            <div>
+              <label>Date:</label>
+            </div>
+            <input
+              type="date"
+              name="date"
+              placeholder="Enter your date"
+              value={user.date}
+              onChange={e => postUserData(e)}
+            />
+           {/* moment().format('MMMM Do YYYY, h:mm:ss a') */}
           </div>
           <button type="submit" className="button">
             Submit

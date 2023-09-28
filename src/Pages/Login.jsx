@@ -158,12 +158,6 @@ export const Login = () => {
                         )}
                       </div>
                     </div>
-
-                    {/* {showHidebtnText ? (
-                      <AiFillEyeInvisible onClick={() => {setShowHideBtnText(false), toggleInput()}} />
-                    ) : (
-                      <AiFillEye onClick={() => {setShowHideBtnText(true), toggleInput()}} />
-                    )} */}
                   </span>
                 </div>
 

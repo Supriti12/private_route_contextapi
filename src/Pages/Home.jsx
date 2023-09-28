@@ -8,7 +8,6 @@ const Home = () => {
     let res = await get(path);
     if (res.status) {
       setdata(res?.data);
-      // console.log(res.data);
     }
   };
   useEffect(() => {
