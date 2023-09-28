@@ -6,6 +6,7 @@ import { loginStatus } from '../Redux/Slice/LoginSlice';
 import LoginApi from '../Services/Auth';
 import { get, post, put } from '../utils/HttpClient';
 import './Login.css';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 
 const initialValue = {
   email: '',
@@ -94,6 +95,14 @@ export const Login = () => {
   //   dispatch(loginStatus());
   // }, [dispatch]);
 
+   const [inputType, setInputType] = useState('password');
+   const [showHidebtnText, setShowHideBtnText] = useState(true);
+
+   const toggleInput = () => {
+     setInputType(inputType == 'password' ? 'text' : 'password');
+    //  setShowHideBtnText(showHidebtnText ? <AiFillEyeInvisible /> : <AiFillEye />);
+
+   };
   return (
     <div>
       <div style={{ marginLeft: '20rem', width: '100%', height: '100vh' }}>
@@ -109,14 +118,56 @@ export const Login = () => {
                   <label htmlFor="exampleInputEmail1" style={{ color: 'white', fontFamily: 'arial', fontSize: '18px' }}>
                     Email
                   </label>
-                  <input type="login-text" name="email" className="form-control" onChange={e => postUserData(e)} />
+                  <input
+                    type="login-text"
+                    name="email"
+                    className="form-control"
+                    onChange={e => postUserData(e)}
+                    placeholder="Enter your email"
+                  />
                   <span style={{ color: 'yellow' }}>{error.email}</span>
                 </div>
-                <div className="login-form-group" style={{ color: 'white', fontFamily: 'arial', fontSize: '18px' }}>
-                  <label htmlFor="exampleInputEmail1">Password</label>
-                  <input type="password" name="password" className="form-control" onChange={e => postUserData(e)} />
-                  <span style={{ color: 'yellow' }}>{error.password}</span>
+
+                <div className="fieldset">
+                  <label className="passwod" htmlFor="exampleInputEmail1">
+                    Password
+                  </label>
+
+                  <span >
+                    <div className="password-input">
+                      <input
+                        className="form-control"
+                        type={inputType}
+                        placeholder="Enter your password"
+                        name="password"
+                        onChange={e => postUserData(e)}
+                      />
+                      <div className="icon" type="button" style={{ color: 'black' }}>
+                        {showHidebtnText ? (
+                          <AiFillEyeInvisible
+                            onClick={() => {
+                              setShowHideBtnText(false), toggleInput();
+                            }}
+                          />
+                        ) : (
+                          <AiFillEye
+                            onClick={() => {
+                              setShowHideBtnText(true), toggleInput();
+                            }}
+                          />
+                        )}
+                      </div>
+                    </div>
+
+                    {/* {showHidebtnText ? (
+                      <AiFillEyeInvisible onClick={() => {setShowHideBtnText(false), toggleInput()}} />
+                    ) : (
+                      <AiFillEye onClick={() => {setShowHideBtnText(true), toggleInput()}} />
+                    )} */}
+                  </span>
                 </div>
+
+                <span style={{ color: 'yellow' }}>{error.password}</span>
                 <div className="login-button-group">
                   <button type="submit" className="button">
                     Login

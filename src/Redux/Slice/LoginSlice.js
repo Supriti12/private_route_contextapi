@@ -16,8 +16,6 @@ const loginUser = createAsyncThunk('login', async user => {
   }
 });
 
-
-
 const LoginSlice = createSlice({
   name: 'login',
   initialState,

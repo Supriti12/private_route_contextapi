@@ -41,3 +41,17 @@
   background-color: orange;
   color: black;
 }
+
+.signin-password {
+  color: black;
+}
+
+.password-input {
+  position: relative;
+}
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  right: 10px;
+}

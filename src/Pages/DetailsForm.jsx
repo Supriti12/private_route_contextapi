@@ -7,6 +7,7 @@ import { useAuth } from '../Context/UserProvider';
 import { db } from '../Firebase';
 import { toast } from 'react-toastify';
 
+
 const DetailsForm = () => {
   const navigate = useNavigate();
   const { data, setData } = useAuth();
@@ -92,7 +93,7 @@ const DetailsForm = () => {
           return false;
         }
         else{
-          console.log(`details ${i}`)
+          // console.log(`details ${i}`)
           let newarr = [...eduError];
           newarr[i] = null;
 
