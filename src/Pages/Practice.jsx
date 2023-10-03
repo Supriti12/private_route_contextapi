@@ -81,8 +81,6 @@ const Practice = () => {
    };
    const handleProcedureContentChange = e => {
      console.log('content---->', e);
-      
-      
       setText(e);
    };
 
@@ -93,7 +91,6 @@ const Practice = () => {
     }
     setTextContent([...textContent,user])
     setUser(initialValue)
-    // console.log(data)
    };
 
   const aoo=[
@@ -145,20 +142,16 @@ const handleClick=()=>{
               theme="snow"
               modules={modules}
               formats={formats}
-              
               // value={user.text}
               placeholder="write your content ...."
               onChange={e => handleProcedureContentChange(e)}
               style={{ height: '220px' }}
-              
             ></ReactQuill>
-            <button type='submit' style={{marginTop:"5rem"}} className='button'>Submit</button>
           </form>
         </div>
       </div>
-      <div>
-        {text}
-      </div>
+      <div dangerouslySetInnerHTML={{ __html: text }} />
+
     </>
   );
 }
