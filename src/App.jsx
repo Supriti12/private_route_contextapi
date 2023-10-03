@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ProductDetails from './Pages/ProductDetails';
 import Contact from './Pages/Contact';
 import Practice from './Pages/Practice';
-import TextEditor from './Pages/TextEditor';
+// import TextEditor from './Pages/TextEditor';
 
 function App() {
   useEffect(() => {
@@ -22,7 +22,7 @@ function App() {
   return (
     <>
       <ToastContainer />
-      <TextEditor/>
+      {/* <TextEditor/> */}
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
