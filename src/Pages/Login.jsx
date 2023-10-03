@@ -81,15 +81,6 @@ export const Login = () => {
     // navigate('/');
   };
 
-  // const redirectUser = () => {
-  //   const token = JSON.parse(localStorage.getItem('token'));
-  //   if (token !== null && token !== undefined && token !== '') {
-  //     navigate('/');
-  //   }
-  // };
-  // useEffect(() => {
-  //   redirectUser();
-  // }, [redirectTo]);
 
   // useEffect(() => {
   //   dispatch(loginStatus());
@@ -129,11 +120,15 @@ export const Login = () => {
                 </div>
 
                 <div className="fieldset">
-                  <label className="passwod" htmlFor="exampleInputEmail1">
+                  <label
+                    className="passwod"
+                    htmlFor="exampleInputEmail1"
+                    style={{ color: 'white', fontFamily: 'arial', fontSize: '18px' }}
+                  >
                     Password
                   </label>
 
-                  <span >
+                  <span>
                     <div className="password-input">
                       <input
                         className="form-control"

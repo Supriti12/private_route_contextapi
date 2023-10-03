@@ -33,7 +33,7 @@ const Contact = () => {
   const {contactUser,setContactUser}=useAuth()
   const navigate=useNavigate();
 
-  const day = moment().format('MMMM DD YYYY');
+  const day = moment(user.date).format('MMMM DD YYYY');
   const time = moment().format('HH mm ss');
 
 
@@ -78,16 +78,16 @@ const Contact = () => {
           <>
             <CardContent>
               <Typography sx={{ fontSize: 18 }} color="text.secondary" gutterBottom>
-                {users.name}
+                Name: {users.name}
               </Typography>
               <Typography variant="h6" component="div">
-                {users.email}
+               Email: {users.email}
               </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {users.password}
+               Password: {users.password}
               </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {users.date}
+               Date: {users.date}
               </Typography>
             </CardContent>
             <div>

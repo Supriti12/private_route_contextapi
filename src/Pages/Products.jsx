@@ -11,6 +11,7 @@ const Products = () => {
   const [visible, setVisible] = useState(0);
   const limit = 3;
   let pages = Math.ceil(prod.length / 3);
+  let [isShowMore,setShowMore]=useState('')
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -45,7 +46,9 @@ const Products = () => {
                  
                   {item.showDescription ? <p>{item.description}</p> :<>{item.description.slice(0,35) +'...'}</>}
                   <Link onClick={() => dispatch(toggleDescription(item.id))}>
+                    {/* {item.showDescription ? '...Show Less' : 'Show More...'} */}
                     {item.showDescription ? '...Show Less' : 'Show More...'}
+
                   </Link>
                   <div>
                     <Link className='btn btn-success' to={`/productdetails/${item.id}`} style={{marginLeft:"6rem"}}>Details</Link>
