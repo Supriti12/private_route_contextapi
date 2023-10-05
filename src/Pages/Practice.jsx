@@ -135,7 +135,7 @@ const handleClick=()=>{
       </button>
 
       <div>
-        <h1 style={{ textAlign: 'center' }}>Text Editor In React JS</h1>
+        {/* <h1 style={{ textAlign: 'center' }}>Text Editor In React JS</h1> */}
         <div style={{ display: 'grid', justifyContent: 'center' }}>
           <form onSubmit={SubmitInfo}>
             <ReactQuill
